@@ -10,7 +10,5 @@ def index(request):
 
 def exibir(request, conta_id):
 
-    conta = Conta()
-    if conta_id == '1':
-        conta = Conta('123', 'henrique westphal', "086.198.999-61", "100.0", "1000.0")
-    return render(request, 'conta.html')
+    conta = Conta.objects.get(id=conta_id)
+    return render(request, 'conta.html', {"conta" : conta})
