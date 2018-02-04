@@ -5,4 +5,5 @@ from contas import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^contas/(?P<conta_id>\d+)$', views.exibir, name='exibir'),
+    url(r'^contas/(?P<conta_id>\d+)/convidar$',views.convidar, name='convidar')
 ]

@@ -10,13 +10,5 @@ class Conta(models.Model):
     saldo = models.DecimalField(max_digits=10000, decimal_places=0, null=False)
     limite = models.DecimalField(max_digits=10000, decimal_places=0, null=False)
 
-
-
-
-#    """docstring for Conta."""
-#    def __init__(self, numero='', titular='', cpf='', saldo='', limite=''):
-#        self.numero = numero
-#        self.titular = titular
-#        self.cpf = cpf
-#        self.saldo = saldo
-#        self.limite = limite
+    def convidar(self, conta_convidado):
+        pass
