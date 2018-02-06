@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from contas.models import Conta
 
 
@@ -17,7 +17,7 @@ def convidar(request, conta_id):
     conta_a_convidar = Conta.objects.get(id=conta_id)
     conta_logado = get_conta_logado(request)
     conta_logado.convidar(conta_a_convidar)
-    return render(request, 'index.html',{'contas': Conta.objects.all()})
+    return redirect('index')
 
 def get_conta_logado(request):
     return Conta.objects.get(id=1)

@@ -11,4 +11,9 @@ class Conta(models.Model):
     limite = models.DecimalField(max_digits=10000, decimal_places=0, null=False)
 
     def convidar(self, conta_convidado):
-        pass
+        convite = Convite(solicitante=self, convidado=conta_convidado).save()
+
+
+class Convite(models.Model):
+    solicitante = models.ForeignKey(Conta, related_name='convites_feitos')
+    convidado = models.ForeignKey(Conta, related_name='convites_recebidos')
