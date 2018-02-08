@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block body %}
  <div class="col-lg-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
+
+   <!-- todos os contatos -->
+    <div class="card">
+      <div class="card-header">
         <strong>Todos as Contas</strong>
       </div>
       {% if contas %}
@@ -15,9 +17,54 @@
           {% endfor %}
         </ul>
         {% else %}
-        <p>Nenhum perfil encontrado</p>
+        <p>Nenhuma Conta encontrada</p>
         {% endif %}
-
     </div>
+
+    <!-- Convites pendentes-->
+    <div class="card">
+      {% with total_de_convites=conta_logado.convites_recebidos.count %}
+         <div class="card-header">
+             <strong>Voce tem {{ total_de_convites }} convite{{ total_de_convites|pluralize }} aguardando aprovação</strong>
+         </div>
+         <ul class="list-group">
+           {% if total_de_convites %}
+            {% for convite in conta_logado.convites_recebidos.all %}
+              <li class="list-group-item">
+                  {{ convite.solicitante.titular }}
+                <a href="{% url 'aceitar' convite.id %}" class="float-right">aceitar</a>
+              </li>
+            {% endfor %}
+            {% else %}
+              <div class="card-body">
+                <p>Nenhum convite recebido :(</p>
+              </div>
+            {% endif %}
+         </ul>
+      {% endwith %}
+    </div>
+
+    <!-- Contatos aceitos-->
+    <div class="card">
+      {% with total_de_contatos=conta_logado.contatos.count %}
+      <div class="card-header">
+        <strong>Todos os seus contatos</strong>
+      </div>
+      <ul class="list-group">
+        {% if total_de_contatos %}
+          {% for contato in conta_logado.contatos.all %}
+            <a href="{% url 'exibir' contato.id %}" class="list-group-item">{{contato.titular}} // {{contato.numero}}</a>
+          {% endfor %}
+        {% else %}
+        <div class="card-body">
+          <p>Nenhum contato encontrado</p>
+        </div>
+        {% endif %}
+      </ul>
+      {% endwith %}
+    </div>
+
+
+
   </div>
   {% endblock %}

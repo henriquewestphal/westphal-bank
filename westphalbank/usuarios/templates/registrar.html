@@ -1,0 +1,29 @@
+{% extends "base_usuario.html" %}
+{% block body %}
+  <form class="form-group" action="{% url 'registrar' %}" method="post">
+    {% csrf_token %}
+    <h2 class="form-signin-heading"> Crie sua conta no Westphal Bank</h2>
+
+    <input id="id_titular" type="text" name="titular"
+      class="form-control" placeholder="titular *"
+      required>
+
+    <input id="id_cpf" type="text" name="cpf"
+      class="form-control" placeholder="cpf *"
+      required>
+
+    <input id="id_saldo" type="text" name="saldo"
+      class="form-control" placeholder="saldo inicial *"
+      required>
+
+    <input id="id_senha" type="password" name="senha"
+      class="form-control" placeholder="senha *"
+      required>
+
+    <hr/>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit" name="button">Registrar</button>
+
+  </form>
+
+{% endblock %}
