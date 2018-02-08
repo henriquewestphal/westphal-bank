@@ -4,15 +4,19 @@
   <div class="col-lg-12">
     <h2 style=" margin-top: 0">{{conta.titular}}</h2>
 
-    <address class="">
+    <address>
       <strong>numero: {{conta.numero}}</strong><br>
       titular: {{conta.titular}},<br>
       cpf: {{conta.cpf}},<br>
       saldo: {{conta.saldo}},<br>
       limite: {{conta.limite}}<br>
-
     </address>
-    <a href="{% url 'convidar' conta.id %}">convidar</a>
+
+    {% if ja_e_contato %}
+      <div class="well well-sm">Vocês estão conectados!</div>
+    {% else %}
+      <a href="{% url 'convidar' conta.id %}" class="btn btn-success" role="button">convidar</a>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
