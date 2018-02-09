@@ -4,17 +4,27 @@
     {% csrf_token %}
     <h2 class="form-signin-heading"> Crie sua conta no Westphal Bank</h2>
 
+    <input id="id_numero" type="text" name="numero"
+      class="form-control" placeholder="numero da conta *">
+    <hr/>
+
     <input id="id_titular" type="text" name="titular"
       class="form-control" placeholder="titular *"
       required>
+
+    <hr/>
 
     <input id="id_cpf" type="text" name="cpf"
       class="form-control" placeholder="cpf *"
       required>
 
+    <hr/>
+
     <input id="id_saldo" type="text" name="saldo"
       class="form-control" placeholder="saldo inicial *"
       required>
+
+    <hr/>
 
     <input id="id_senha" type="password" name="senha"
       class="form-control" placeholder="senha *"
@@ -23,6 +33,15 @@
     <hr/>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit" name="button">Registrar</button>
+    <hr/>
+
+    {% if form.errors %}
+      <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" >&times; </button>
+        {{form.non_field_errors}}
+      </div>
+    {% endif %}
+
 
   </form>
 
