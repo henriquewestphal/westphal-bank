@@ -5,8 +5,19 @@
    <!-- todos os contatos -->
     <div class="card">
       <div class="card-header">
-        <strong>Todos as Contas</strong>
+        <strong>Seu Saldo</strong>
       </div>
+      
+        <p> {{conta.saldo}}
+            {{conta.titular}}
+        </p>
+    </div>
+
+      <!-- lista de todas as contas -->
+      <div class="card">
+        <div class="card-header">
+          <strong>Todos as Contas</strong>
+        </div>
       {% if contas %}
       <ul>
         {% for conta in contas %}
@@ -19,7 +30,6 @@
         {% else %}
         <p>Nenhuma Conta encontrada</p>
         {% endif %}
-    </div>
 
     <!-- Convites pendentes-->
     <div class="card">

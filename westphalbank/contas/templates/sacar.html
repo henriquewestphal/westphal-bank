@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block body %}
+  <div>
+    {% csrf_token %}
+    <div class="card-header">
+      <strong>Saque</strong>
+    </div>
+    <input id="id_saque" type="text" name="saque"
+      class="form-control" placeholder="Valor do saque"
+      required>
+      <br>
+      <button class="btn btn-success" type="submit" name="button">Sacar</button>
+
+  </div>
+
+{% endblock %}

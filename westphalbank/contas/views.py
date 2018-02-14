@@ -32,3 +32,10 @@ def aceitar(request, convite_id):
     convite = Convite.objects.get(id=convite_id)
     convite.aceitar()
     return redirect('index')
+
+def sacar(request, conta_id):
+    conta = Conta.objects.get(id=conta_id)
+    return render(request, 'sacar.html')
+
+def depositar(request):
+    pass

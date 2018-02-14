@@ -6,12 +6,15 @@
 
     <address>
       <strong>numero: {{conta.numero}}</strong><br>
+
+
       titular: {{conta.titular}},<br>
       cpf: {{conta.cpf}},<br>
       saldo: {{conta.saldo}},<br>
       limite: {{conta.limite}}<br>
     </address>
-
+      <a href="{% url 'sacar' conta.id %}" class="btn btn-success" role="button">Sacar</a>
+        <a href="{% url 'depositar' conta.id %}" class="btn btn-success" role="button">depositar</a>
     {% if ja_e_contato %}
       <div class="well well-sm">Vocês estão conectados!</div>
     {% else %}
