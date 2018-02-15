@@ -26,11 +26,10 @@ class Convite(models.Model):
         self.solicitante.contatos.add(self.convidado)
         self.delete()
 
-    def sacar(self, valor):
-        self.saldo = self.saldo-valor.save()
-        return
+def sacar(self, valor):
+    self.saldo = self.saldo-valor.save()
+    return
 
-    def depositar(self, valor):
-
-        self.saldo = self.saldo+valor.save()
-        return 
+def depositar(self, valor):
+    self.saldo = self.saldo+valor.save()
+    return 

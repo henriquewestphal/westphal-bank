@@ -5,6 +5,7 @@ from contas.models import Conta, Convite
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from contas.forms import MudaSaldoForm
+from django.views.generic.base import View
 
 @login_required
 def index(request):
@@ -36,6 +37,7 @@ def aceitar(request, convite_id):
 
 
 class MudaSaldoView(View):
+    
     template_name = 'sacar.html'
 
     def get(self, request):
@@ -45,11 +47,11 @@ class MudaSaldoView(View):
         form = MudaSaldoForm(request.POST)
 
 
-def sacar(request, conta_id):
-    conta_logado = get_conta_logado(request)
+    def sacar(request):
+        conta_logado = get_conta_logado(request)
 
-    conta_logado.sacar(valor)
-    return render(request, 'sacar.html')
+        conta_logado.sacar(valor)
+        return
 
-def depositar(request):
-    pass
+    def depositar(request):
+        pass

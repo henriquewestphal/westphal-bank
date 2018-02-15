@@ -1,7 +1,7 @@
 from django import forms
 
 class MudaSaldoForm(forms.Form):
-    valor = forms.FloatField(request=True)
+    valor = forms.FloatField(required=True)
 
 
 #        def saque(self, valor):
