@@ -5,7 +5,7 @@ class RegistrarUsuarioForm(forms.Form):
     numero = forms.DecimalField(required=False)
     titular = forms.CharField(required=True)
     cpf = forms.CharField(required=True)
-    saldo = forms.CharField(required=True)
+    saldo = forms.FloatField(required=True)
     senha = forms.CharField(required=True)
 
     def is_valid(self):

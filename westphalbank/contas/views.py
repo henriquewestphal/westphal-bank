@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from contas.models import Conta, Convite
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from contas.forms import MudaSaldoForm
 
 @login_required
 def index(request):
@@ -33,8 +34,21 @@ def aceitar(request, convite_id):
     convite.aceitar()
     return redirect('index')
 
+
+class MudaSaldoView(View):
+    template_name = 'sacar.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        form = MudaSaldoForm(request.POST)
+
+
 def sacar(request, conta_id):
-    conta = Conta.objects.get(id=conta_id)
+    conta_logado = get_conta_logado(request)
+
+    conta_logado.sacar(valor)
     return render(request, 'sacar.html')
 
 def depositar(request):

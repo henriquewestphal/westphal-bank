@@ -7,7 +7,7 @@ class Conta(models.Model):
     numero = models.CharField(max_length=255)
     titular = models.CharField(max_length=255, null=False)
     cpf = models.CharField(max_length=11, null=False)
-    saldo = models.DecimalField(max_digits=10000, decimal_places=0, null=False)
+    saldo = models.FloatField(null=False)
     limite = '1000.0'
     contatos = models.ManyToManyField('self')
     usuario = models.OneToOneField(User, related_name="conta")
@@ -25,3 +25,12 @@ class Convite(models.Model):
         self.convidado.contatos.add(self.solicitante)
         self.solicitante.contatos.add(self.convidado)
         self.delete()
+
+    def sacar(self, valor):
+        self.saldo = self.saldo-valor.save()
+        return
+
+    def depositar(self, valor):
+
+        self.saldo = self.saldo+valor.save()
+        return 

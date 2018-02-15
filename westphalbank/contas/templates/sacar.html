@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 {% block body %}
-  <div>
+  <form class="form-group" action="{% url 'sacar' %}" method="post">
     {% csrf_token %}
-    <div class="card-header">
-      <strong>Saque</strong>
-    </div>
-    <input id="id_saque" type="text" name="saque"
-      class="form-control" placeholder="Valor do saque"
-      required>
-      <br>
-      <button class="btn btn-success" type="submit" name="button">Sacar</button>
+    <h2 class="form-signin-heading"><strong>Saque</strong></h2>
 
-  </div>
+    <input id="id_sacar" type="text" name="sacar"
+      class="form-control" placeholder="Valor a sacar"
+      required>
+    <hr/>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit" name="button">Sacar</button>
+    <hr/>
+  </form>
 
 {% endblock %}
