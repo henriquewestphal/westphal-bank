@@ -32,4 +32,19 @@ def sacar(self, valor):
 
 def depositar(self, valor):
     self.saldo = self.saldo+valor.save()
-    return 
+    return
+
+
+class saldo(object):
+
+    numero = models.ForeignKey(Conta, related_name='numero')
+    titular = models.ForeignKey(Conta, related_name='titular')
+    saldo_conta = models.FloatField(null=False)
+
+    def depositar(self, valor):
+        self.saldo_conta = self.saldo_conta + valor
+    return
+
+    def sacar(self, valor):
+        self.saldo = self.saldo-valor.save()
+    return
